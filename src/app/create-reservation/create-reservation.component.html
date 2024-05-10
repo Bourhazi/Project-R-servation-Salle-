@@ -1,0 +1,39 @@
+<div class="container mt-5 col-md-6 offset-md-3">
+  <h1 class="text-center mb-4">Add Reservation</h1>
+  <form (ngSubmit)="saveReservation()">
+    <div *ngIf="hasError" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="dateError" class="alert alert-danger">
+      {{ dateErrorMessage }}
+    </div>
+    <div class="mb-3">
+      <label for="dateArrivee" class="form-label">Arrival Date</label>
+      <input type="date" class="form-control" name="dateArrivee" id="dateArrivee" [(ngModel)]="reservation.date_debut" placeholder="Select arrival date">
+    </div>
+    <div class="mb-3">
+      <label for="dateDepart" class="form-label">Departure Date</label>
+      <input type="date" class="form-control" name="dateDepart" id="dateDepart" [(ngModel)]="reservation.date_fin" placeholder="Select departure date">
+    </div>
+    <div class="mb-3">
+      <label for="category" class="form-label">Category</label>
+      <select class="form-select" name="category" id="category" [(ngModel)]="selectedCategoryId" required >
+        <!-- <option value="">Select a category</option> -->
+        <!-- <option value="" disabled selected>Select a category</option> -->
+        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+      </select>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Add Reservation</button>
+    </div>
+  </form>
+</div>
+<!-- <div class="container mt-5 col-md-6 offset-md-3">
+  <h1 class="text-center mb-4">Choisir Salle</h1>
+  <div id="salles">
+
+  </div>
+</div> -->

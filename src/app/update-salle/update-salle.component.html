@@ -1,0 +1,22 @@
+<div class="container mt-5 col-md-6 offset-md-3">
+  <h1 class="text-center mb-4">Update Salle</h1>
+  <form (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Nom Salle</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="salle.name" name="name" required>
+    </div>
+    <div class="mb-3">
+      <label for="prix" class="form-label">Prix Salle</label>
+      <input type="number" class="form-control" id="prix" [(ngModel)]="salle.prix" name="prix" required>
+    </div>
+    <div class="mb-3">
+      <label for="category" class="form-label">Category</label>
+      <select class="form-select" id="category" [(ngModel)]="salle.categorie.id" name="category" required>
+        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+      </select>
+    </div>
+    <div class="text-center d-grid gap-2">
+      <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+  </form>
+</div>

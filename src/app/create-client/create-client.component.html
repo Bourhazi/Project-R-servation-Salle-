@@ -1,0 +1,35 @@
+<div class="container mt-5 col-md-6 offset-md-3">
+  <h1 class="text-center mb-4">Client Information</h1>
+  <form (ngSubmit)="submitClient()">
+    <div *ngIf="erroemessage" class="alert alert-danger text-center" role="alert">
+      {{ erroemessage }}
+    </div>
+    <div class="mb-3">
+      <label for="nom" class="form-label">Cin</label>
+      <input type="text" class="form-control" name="cin" id="nom" [(ngModel)]="client.cin" placeholder="Add your cin" required>
+    </div>
+    <div class="mb-3">
+      <label for="nom" class="form-label">Second Name</label>
+      <input type="text" class="form-control" name="nom" id="nom" [(ngModel)]="client.nom" placeholder="Add your second name" required>
+    </div>
+    <div class="mb-3">
+      <label for="prenom" class="form-label">First name</label>
+      <input type="text" class="form-control" name="prenom" id="prenom" [(ngModel)]="client.prenom" placeholder="Add your first name" required>
+    </div>
+    <div class="mb-3">
+      <label for="adresse" class="form-label">Adress</label>
+      <input type="text" class="form-control" name="adresse" id="adresse" [(ngModel)]="client.adresse" placeholder="Add your adresse" required>
+    </div>
+    <div class="mb-3">
+      <label for="telephone" class="form-label">Phone</label>
+      <input type="text" class="form-control" name="telephone" id="telephone" [(ngModel)]="client.telephone" placeholder="Add your phone" required>
+    </div>
+    <div class="mb-3">
+      <label for="Email" class="form-label">Mail</label>
+      <input type="text" class="form-control" name="Email" id="Email" [(ngModel)]="client.email"  placeholder="Add your mail" required>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>

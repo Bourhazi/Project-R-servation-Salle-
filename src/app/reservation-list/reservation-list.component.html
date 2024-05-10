@@ -1,0 +1,25 @@
+
+<div  class="container mt-5">
+  <h1 class="text-center mb-4"> Reservations Lists</h1>
+  <div class="form-outline mt-3 mb-4">
+    <input  type="search" [(ngModel)]="search" id="form1" class="form-control" placeholder="search" aria-label="search">
+  </div>
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Entry Date</th>
+        <th scope="col">Departure Date</th>
+        <th scope="col">Client Name</th>
+        <th scope="col">Salle Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reservation of reservations | filter:search">
+        <td>{{ convertirTimestampEnDate(reservation.date_debut) | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ convertirTimestampEnDate(reservation.date_fin) | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ reservation.salle.name }}</td>
+        <td>{{ reservation.client.nom }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

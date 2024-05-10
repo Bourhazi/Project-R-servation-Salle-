@@ -1,0 +1,29 @@
+
+<div  class="container mt-5">
+  <h1 class="text-center mb-4">Clients Lists</h1>
+  <div class="form-outline mt-3 mb-4">
+    <input  type="search" [(ngModel)]="search" id="form1" class="form-control" placeholder="search" aria-label="search">
+  </div>
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Last Name</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Adress</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Cin</th>
+        <th scope="col">Mail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of clients | filter:search">
+        <td>{{client.nom}}</td>
+        <td>{{ client.prenom}}</td>
+        <td>{{ client.adresse }}</td>
+        <td>{{ client.telephone }}</td>
+        <td>{{ client.cin }}</td>
+        <td>{{ client.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

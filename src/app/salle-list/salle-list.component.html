@@ -1,0 +1,27 @@
+<div  class="container mt-5">
+  <h1 class="text-center mb-4">Salles List</h1>
+  <div class="form-outline mt-3 mb-4">
+    <input  type="search" [(ngModel)]="search" id="form1" class="form-control" placeholder="search" aria-label="search">
+  </div>
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Category</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let salle of salles|filter:search">
+        <td>{{ salle.name }}</td>
+        <td>{{ salle.prix }} DH</td>
+        <td>{{ salle.categorie.name }}</td>
+        <td>
+          <button class="btn btn-primary me-2" (click)="updateSalle(salle.id)">Update</button>
+          <button class="btn btn-danger" (click)="deleteSalle(salle.id)" >Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
