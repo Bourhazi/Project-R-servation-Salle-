@@ -5,10 +5,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.sid.salle.dao.ClientRepository;
 import org.sid.salle.dao.ReservationRepository;
-import org.sid.salle.model.Categorie;
-import org.sid.salle.model.Client;
-import org.sid.salle.model.ClientReservationWrapper;
-import org.sid.salle.model.Reservation;
+import org.sid.salle.model.*;
 import org.sid.salle.services.ClientService;
 import org.sid.salle.services.ClientServiceImpl;
 import org.sid.salle.services.ReservationService;
@@ -42,10 +39,18 @@ public class ClientController {
         String siteUrl = ClientService.getSiteURL(request);
         Client client = clientReservationWrapper.getClient();
         Reservation reservation = clientReservationWrapper.getReservation();
+
+        Salle salle = reservation.getSalle();
+        if (salle == null || salle.getId() == 0) {
+            throw new IllegalArgumentException("Salle must not be null");
+        }
+        if (reservation == null) {
+            throw new IllegalArgumentException("Reservation must not be null");
+        }
         Client client1 = clientRepository.save(client);
         reservation.setClient(client1);
         reservationService.save(reservation);
-        clientService.deleteExpiredReservations();
+        //clientService.deleteExpiredReservations();
         clientService.sendVerificationEmail(client, reservation.getLienReservation(), siteUrl);
     }
 
